@@ -2,6 +2,8 @@
 ;;; This file bootstraps the configuration, which is divided into
 ;;; a number of other files.
 
+(let ((file-name-handler-alist nil))
+
 (let ((minver "23.3"))
   (when (version<= emacs-version "23.1")
     (error "Your Emacs is too old -- this config requires v%s or higher" minver)))
@@ -147,9 +149,19 @@
                      (sanityinc/time-subtract-millis after-init-time before-init-time))))
 
 
+;; Speed up Emacs startup time
+;; See here: https://www.reddit.com/r/emacs/comments/3kqt6e/2_easy_little_known_steps_to_speed_up_emacs_start/
+(run-with-idle-timer
+ 5 nil
+ (lambda ()
+   (setq gc-cons-threshold 1000000)
+   (message "gc-cons-threshold restored to %S"
+            gc-cons-threshold)))
+
 (provide 'init)
 
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: t
 ;; End:
+)
