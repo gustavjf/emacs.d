@@ -5,6 +5,7 @@
 ;;; Code:
 
 (require 'balaji-kmacros)
+(require 'git-gutter)
 (require 'eslint-conf)
 (require 'tern-conf)
 
