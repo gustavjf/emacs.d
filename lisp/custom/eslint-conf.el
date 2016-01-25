@@ -19,6 +19,9 @@
 
 (require 'flycheck)
 
+;; turn on flychecking globally
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
 ;; Disable jshint since eslint is preferred
 (setq-default flycheck-disabled-checkers
               (append flycheck-disabled-checkers
