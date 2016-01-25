@@ -35,6 +35,12 @@
               (append flycheck-disabled-checkers
                       '(json-jsonist)))
 
+;; https://github.com/purcell/exec-path-from-shell
+;; only need exec-path-from-shell on OSX
+;; this hopefully sets up path and other vars better
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
+
 ;; Adjust indents for web-mode
 (defun my-web-mode-hook ()
   "Hooks for Web mode. Adjust indents"
