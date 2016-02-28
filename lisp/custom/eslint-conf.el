@@ -22,6 +22,18 @@
 ;; turn on flychecking globally
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
+;; Check for local eslint install executable and use as flycheck executable
+(with-eval-after-load 'flycheck
+  (add-hook 'flycheck-mode-hook 'setup-local-eslint))
+
+(defvar flycheck-javascript-eslint-executable)
+(defun setup-local-eslint ()
+  "If ESLint found in node_modules dir, use that for flycheck."
+  (interactive)
+  (let ((local-eslint (expand-file-name "./node_modules/.bin/eslint")))
+    (setq flycheck-javascript-eslint-executable
+          (and (file-exists-p local-eslint) local-eslint))))
+
 ;; Disable jshint since eslint is preferred
 (setq-default flycheck-disabled-checkers
               (append flycheck-disabled-checkers
