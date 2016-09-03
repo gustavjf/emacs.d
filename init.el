@@ -10,6 +10,8 @@
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (require 'init-benchmarking) ;; Measure startup time
+(let ((default-directory "~/.emacs.d/lisp"))
+  (normal-top-level-add-subdirs-to-load-path))
 
 (defconst *spell-check-support-enabled* nil) ;; Enable with t if you prefer
 (defconst *is-a-mac* (eq system-type 'darwin))
