@@ -9,6 +9,7 @@
 (require 'init-golang)
 (require 'init-javascript-extended)
 (require 'init-tern)
+(require 'init-rust)
 
 (provide 'init-local)
 ;;; init-local.el ends here
