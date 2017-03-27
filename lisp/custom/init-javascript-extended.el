@@ -44,5 +44,9 @@
   (setq web-mode-code-indent-offset 2))
 (add-hook 'web-mode-hook 'my-web-mode-hook)
 
+;; flowtype
+;; https://flowtype.org
+(load-file "~/.emacs.d/lisp/custom/flow.el")
+
 (provide 'init-javascript-extended)
 ;;;
