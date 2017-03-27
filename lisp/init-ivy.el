@@ -1,17 +1,30 @@
 (when (maybe-require-package 'ivy)
   (after-load 'ivy
     (setq-default ivy-use-virtual-buffers t
-                  ivy-count-format "")
+                  ivy-count-format ""
+                  projectile-completion-system 'ivy
+                  ivy-initial-inputs-alist
+                  '((counsel-M-x . "^")
+                    (man . "^")
+                    (woman . "^")))
     ;; IDO-style directory navigation
     (define-key ivy-minibuffer-map (kbd "C-j") #'ivy-immediate-done)
     (define-key ivy-minibuffer-map (kbd "RET") #'ivy-alt-done)
     (when (maybe-require-package 'diminish)
       (diminish 'ivy-mode)))
 
+  (defun sanityinc/enable-ivy-flx-matching ()
+    "Make `ivy' matching work more like IDO."
+    (interactive)
+    (require-package 'flx)
+    (setq-default ivy-re-builders-alist
+                  '((t . ivy--regex-fuzzy))))
+
   (add-hook 'after-init-hook
             (lambda ()
               (when (bound-and-true-p ido-ubiquitous-mode)
-                (ido-ubiquitous-mode -1)
+                (ido-ubiquitous-mode -1))
+              (when (bound-and-true-p ido-mode)
                 (ido-mode -1))
               (ivy-mode 1))))
 
