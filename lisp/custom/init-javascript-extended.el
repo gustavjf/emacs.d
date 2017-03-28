@@ -46,7 +46,7 @@
 
 ;; flowtype
 ;; https://flowtype.org
-(load-file "~/.emacs.d/lisp/custom/flow.el")
+(load-file "~/.emacs.d/lisp/custom/flow-for-emacs/flow.el")
 
 (provide 'init-javascript-extended)
 ;;;
