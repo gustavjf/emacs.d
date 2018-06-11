@@ -5,6 +5,11 @@
 ;; -----------------------------------------------------------
 
 ;;; Code:
+(require 'flycheck-flow)
+
+(flycheck-add-next-checker 'javascript-eslint 'javascript-flow)
+
+(flycheck-add-next-checker 'javascript-flow 'javascript-flow-coverage)
 
 (with-eval-after-load 'flycheck
   (flycheck-popup-tip-mode))
