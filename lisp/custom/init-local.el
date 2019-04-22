@@ -11,6 +11,7 @@
 (require 'init-javascript-extended)
 (require 'init-tern)
 (require 'init-rust)
+(require 'init-undo-tree)
 
 (provide 'init-local)
 ;;; init-local.el ends here
