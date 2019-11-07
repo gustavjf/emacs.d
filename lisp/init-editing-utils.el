@@ -116,6 +116,7 @@
   (after-load 'symbol-overlay
     (diminish 'symbol-overlay-mode)
     (define-key symbol-overlay-mode-map (kbd "M-i") 'symbol-overlay-put)
+    (define-key symbol-overlay-mode-map (kbd "M-I") 'symbol-overlay-remove-all)
     (define-key symbol-overlay-mode-map (kbd "M-n") 'symbol-overlay-jump-next)
     (define-key symbol-overlay-mode-map (kbd "M-p") 'symbol-overlay-jump-prev)))
 
@@ -332,11 +333,11 @@ With arg N, insert N newlines."
 (add-hook 'after-init-hook 'hes-mode)
 
 
-(require-package 'guide-key)
-(setq guide-key/guide-key-sequence t)
-(add-hook 'after-init-hook 'guide-key-mode)
-(after-load 'guide-key
-  (diminish 'guide-key-mode))
+(require-package 'which-key)
+(add-hook 'after-init-hook 'which-key-mode)
+(setq-default which-key-idle-delay 1.5)
+(after-load 'which-key
+  (diminish 'which-key-mode))
 
 
 (defun sanityinc/disable-features-during-macro-call (orig &rest args)
